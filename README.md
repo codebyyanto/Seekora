@@ -70,8 +70,8 @@ npm run dev
 ## 📂 Struktur Project
 
 ```
-d:/STK/website/
-├── backend/            # [BARU] Logika Python & Flask
+root/seekora/
+├── backend/            # Logika Python & Flask
 │   ├── app.py          # Entry point server Flask
 │   ├── ir_methods.py   # Implementasi algoritma (VSM, BM25, dll)
 │   └── requirements.txt
