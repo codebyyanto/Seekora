@@ -1,0 +1,6 @@
+flask
+flask-cors
+scikit-learn
+Sastrawi
+rank-bm25
+numpy

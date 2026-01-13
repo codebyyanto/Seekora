@@ -1,65 +1,108 @@
-import Image from "next/image";
+import { Navbar } from "@/components/ui/Navbar";
+import { Button } from "@/components/ui/button";
+
+import {
+  ArrowRight,
+} from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen flex flex-col font-sans selection:bg-seekora-primary/30">
+      <Navbar />
+
+      {/* HERO SECTION */}
+      <section className="relative pt-32 pb-20 px-6 min-h-[90vh] flex items-center justify-center">
+        <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-12 items-center">
+
+          {/* Left Content */}
+          <div className="space-y-8 animate-[fade-in_0.8s_ease-out]">
+
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight">
+              Seekora <span className="text-slate-500">—</span> <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-seekora-primary via-seekora-accent to-pink-500">
+                Information Retrieval Lab
+              </span>
+            </h1>
+
+            <p className="text-lg text-slate-400 max-w-xl leading-relaxed">
+              Laboratorium Digital untuk Eksplorasi Temu Kembali Informasi.
+              Pelajari cara kerja mesin pencari mulai dari Boolean, VSM, hingga BM25 secara visual dan interaktif.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <Link href="/methods">
+                <Button size="lg" className="rounded-full px-8 text-base shadow-[0_0_30px_-5px_rgba(59,130,246,0.6)] hover:shadow-[0_0_40px_-5px_rgba(59,130,246,0.8)] transition-shadow">
+                  Mulai Eksplorasi
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+
+            </div>
+          </div>
+
+          {/* Right Visual (Abstract Dashboard) */}
+          <div className="relative lg:block glass-card p-6 aspect-video animate-[slide-up_1s_ease-out]">
+            {/* Mock UI Elements */}
+            <div className="absolute inset-0 bg-gradient-to-br from-seekora-primary/5 to-seekora-accent/5" />
+            <div className="relative z-10 space-y-4">
+              <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                <div className="flex space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                </div>
+                <div className="h-2 w-20 bg-white/10 rounded-full" />
+              </div>
+
+              <div className="grid grid-cols-3 gap-4 h-full">
+                {/* Graph Area */}
+                <div className="col-span-2 space-y-2">
+                  <div className="h-32 rounded-lg bg-gradient-to-tr from-seekora-primary/20 to-transparent border border-seekora-primary/20 flex items-center justify-center relative overflow-hidden">
+                    {/* Mock Graph Lines */}
+                    <svg className="absolute inset-0 w-full h-full p-4" viewBox="0 0 100 50" preserveAspectRatio="none">
+                      <path d="M0,50 Q25,10 50,30 T100,5" fill="none" stroke="#3b82f6" strokeWidth="2" />
+                      <circle cx="100" cy="5" r="3" fill="#8b5cf6" />
+                    </svg>
+                  </div>
+                  <div className="flex gap-2">
+                    <div className="h-10 w-full bg-white/5 rounded" />
+                    <div className="h-10 w-full bg-white/5 rounded" />
+                  </div>
+                </div>
+                {/* Sidebar Area */}
+                <div className="space-y-2">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="h-8 w-full bg-white/5 rounded flex items-center px-2">
+                      <div className="h-2 w-2 rounded-full bg-seekora-accent" />
+                      <div className="ml-2 h-2 w-12 bg-white/10 rounded" />
+                    </div>
+                  ))}
+                  <div className="mt-4 p-2 glass rounded-lg border border-seekora-accent/30">
+                    <div className="flex justify-end space-x-1">
+                      <div className="text-yellow-400 text-xs">★</div>
+                      <div className="text-yellow-400 text-xs">★</div>
+                      <div className="text-yellow-400 text-xs">★</div>
+                    </div>
+                    <div className="mt-2 flex items-end justify-between h-10 px-1">
+                      <div className="w-2 bg-seekora-primary h-[40%] rounded-t" />
+                      <div className="w-2 bg-seekora-primary h-[70%] rounded-t" />
+                      <div className="w-2 bg-seekora-primary h-[30%] rounded-t" />
+                      <div className="w-2 bg-seekora-accent h-[100%] rounded-t" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/5 py-12 text-center text-slate-500 text-sm">
+        <p>&copy; {new Date().getFullYear()} Seekora | Laboratorium Interaktif Temu Kembali Informasi</p>
+
+      </footer>
+    </main >
   );
 }
